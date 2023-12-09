@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List with Notifications</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <ul id="todoList">
+        <!-- Your todo items will be displayed here -->
+    </ul>
+    <script>
+        // Function to add a new todo item
+        function addTodo() {
+            const todoText = prompt("Enter a new task:");
+            if (todoText) {
+                const todoList = document.getElementById("todoList");
+                const todoItem = document.createElement("li");
+                todoItem.textContent = todoText;
+                todoList.appendChild(todoItem);
+
+                // Prompt user for time
+                const notificationTime = prompt("Enter notification time (in minutes):");
+                if (notificationTime) {
+                    // Schedule notification
+                    const notificationDelay = parseInt(notificationTime) * 60 * 1000;
+                    setTimeout(() => {
+                        showNotification(todoText);
+                    }, notificationDelay);
+                }
+            }
+        }
+
+        // Function to display a notification
+        function showNotification(todoText) {
+            if ('Notification' in window) {
+                Notification.requestPermission().then((permission) => {
+                    if (permission === 'granted') {
+                        const notification = new Notification('Todo Reminder', {
+                            body: todoText,
+                        });
+                    }
+                    console.log(Notification);
+                });
+            }
+        }
+    </script>
+    <button onclick="addTodo()">Add Todo</button>
+</body>
+</html>

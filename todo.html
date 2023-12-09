@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .todo-container {
+      text-align: center;
+    }
+
+    #datetimePicker {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: none;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    #datetimePicker span {
+      cursor: pointer;
+      margin: 0 5px;
+    }
+
+    #datetimePicker span:hover {
+      color: #007BFF;
+    }
+  </style>
+  <title>Todo List with Reminder</title>
+</head>
+<body>
+  <div class="todo-container">
+    <input type="text" id="taskInput" placeholder="Enter your task">
+    <input type="text" id="datetimeInput" placeholder="Select date and time">
+    <button onclick="setReminder()">Set Reminder</button>
+    <div id="datetimePicker"></div>
+    <ul id="todoList"></ul>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const taskInput = document.getElementById('taskInput');
+      const datetimeInput = document.getElementById('datetimeInput');
+      const datetimePicker = document.getElementById('datetimePicker');
+      const todoList = document.getElementById('todoList');
+
+      function createDateTimePicker() {
+        let content = '<div>';
+        for (let i = 0; i < 24; i++) {
+          content += `<span onclick="selectHour(${i})">${i < 10 ? '0' + i : i}:00</span>`;
+        }
+        content += '</div>';
+        datetimePicker.innerHTML = content;
+      }
+
+      datetimeInput.addEventListener('focus', function() {
+        datetimePicker.style.display = 'block';
+        createDateTimePicker();
+      });
+
+      datetimeInput.addEventListener('blur', function() {
+        datetimePicker.style.display = 'none';
+      });
+
+      window.selectHour = function(hour) {
+        const selectedDate = new Date();
+        selectedDate.setHours(hour);
+        selectedDate.setMinutes(0);
+        datetimeInput.value = selectedDate.toISOString().slice(0, 16);
+        datetimePicker.style.display = 'none';
+      };
+
+      window.setReminder = function() {
+        const task = taskInput.value.trim();
+        const datetime = datetimeInput.value.trim();
+
+        if (task !== '' && datetime !== '') {
+          const reminderItem = document.createElement('li');
+          reminderItem.textContent = `Task: ${task} - Reminder: ${datetime}`;
+          todoList.appendChild(reminderItem);
+
+          // Additional logic for setting up reminders can be added here
+          // For example, using a notification library or scheduling reminders
+        }
+
+        taskInput.value = '';
+        datetimeInput.value = '';
+      };
+    });
+  </script>
+</body>
+</html>
