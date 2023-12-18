@@ -8,9 +8,10 @@
     --body-color :  #002025;
     --button-color: orange;
     --main-color :  #f8f8f839;
+    --input-text:#bbf596;
 }
 body{
-    background-color: #2b2c2c;
+    background-color: #1c2742;
     display: flex;
     justify-content: center;
     justify-items: center;
@@ -29,7 +30,7 @@ body{
     align-content: center;
     align-items: center;
     position: relative;
-    left: 5%;
+    left: 6.6%;
     top: 18px;
     border-radius: 10px;
     margin-right: 10%;
@@ -117,6 +118,7 @@ border-radius: 10px;
     border: none;
     box-shadow: 5px 3px 10px black;
     color: #ffffff;
+    cursor: pointer;
 
 }
 .list{
@@ -136,7 +138,7 @@ border-radius: 10px;
     width: 100px;
     height: 100px;
     background-color: #e26f17;
-   
+   cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -174,23 +176,31 @@ margin-top: 10px;
     position: absolute;
      appearance: none;
      left: 5%;
-
+   cursor: pointer;
     border: 3px solid #00d4c9;
    transition: 0.1s;
    background-color: #ea1c1c25;
    
 }
-.chek::after{
-    content:djlsdsdsd;
-    font-size: 50px;
-    font-weight: 900;
-
-}
-.chek:checked{
-    background-color: #ca1d06;
-    border-radius: 50px;
-    
-
+.chek:checked + label::before {
+    background-color: #958989;
+    width: 20px;
+    height: 20px;
+    content: '\2713'; /* Unicode checkmark character */
+    font-size: 30px;
+    color: #01f2ff;
+    display: block;
+    position: relative;
+    top: -19px;
+    left: -14px;
+    border-radius: 2px;
+    transform: translate(50%,50%);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+   
 }
 
 
@@ -216,6 +226,7 @@ p{
     left: 7%;
     padding-top: 10px;
     padding-bottom: 10px;
+    font-weight: 600;
 
 
 }
@@ -253,46 +264,82 @@ transition: 0.6s;
     background: none;
     outline: none;
     color: #ffffff;
-    font-size: 20px;
-    padding: 10px;
+    font-size: 15px;
+    padding: 12px 10px 0px 14px;
     filter: drop-shadow(10px,5px 10px black);
 
 
 
 }
-#inputdate{
+.wrap{
+    height: auto;
+    width: 98%;
+    background-color: #0bf1e609;
     position: absolute;
-    top: 220px;
-    left: 30px;
-    width: 40%;
-    border: none;
-    background: none;
-    border-bottom: 5px solid  #00ae91;
-    padding-bottom: 10px;
-    color: #ffffff;
-    outline:none;
-    font-size: 100%x;
-    padding: 10px;
+    top: 240px;
+    display:flex;
+    justify-content: center;
+    
+    flex-direction: row;
 }
-#inputtime{
-    
+.wrap2{
+    height: auto;
+    width: 98%;
+    background-color: #0bf1e609;
     position: absolute;
-    top: 229px;
-    left: 57%;
-    width: 30%;
-    border: none;
-    background: none;
-    border-bottom: 5px solid #00ae91;
-    padding-bottom: 5px;
-    color: #ffffff;
-    outline:none;
-    font-size: 120%;
-    
-    display: flex;
-    padding-left: 20px;
-    
+    top: 240px;
+    display:flex;
+    justify-content: center;
+    top: 340px;
+    flex-direction: row;
+}
+.lebel{
+    color: rgb(113, 109, 109);
+    position: absolute;
+    bottom: 10px;
+    left: 7%;
 
 }
+.datewraper{
+    width: 98%;
+    background-color: #0bf1e609;
+    position: absolute;
+
+    display:flex;
+    justify-content: center;
+    gap: 22px;
+    flex-direction: row;
+
+}
+.timewraper{
+    width: 98%;
+    background-color: #00d4c900;
+    position: absolute;
+    
+    display:flex;
+    justify-content: center;
+    gap: 22px;
+
+
+
+}
+
+.hours{
+    
+    background: none;
+    color: var(--input-text);
+    border: none;
+    width: 25%;
+    height: 30px;
+    border-bottom: 3px solid #00ae91;
+
+    padding-left: 10px;
+    font-weight: 700;
+}
+option{
+    color: #00d4c9;
+}
+
 .logo{
     height: 470px;
     z-index: -1;
@@ -301,14 +348,15 @@ transition: 0.6s;
     align-self: center;
     display: flex;
     margin-right: 1.1%;
+    opacity: 0.3;
     
 }
 .notificationdelails{
 
 
-    width: 85%;
+    width: 95%;
     position: absolute;
-    top: 290px;
+    top: 390px;
     display: flex;
     justify-content: baseline;
     align-content: baseline;
@@ -321,33 +369,55 @@ transition: 0.6s;
     font-weight: 700;
     margin-left: 1px;
     width: 100%;
-    color: #e4f3f9;
+    color: #ffffff;
+
     
 }
-.date{
-    color: rgb(71, 243, 255);
+/* .inputdate{
+   background: none;
+    color: #ebf8f7;
+    border: none;
+    outline: none;
+    font-weight: 700;
+    width: 29%;
+    font-size: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
+    height: 27px;
+    border-bottom: 3px solid #00ae91;
+
+} */
+  /* in here i wrote all off clas which is never exist on main html. 
+  Javascript will make all off this by the user order */
+.date{ color: #dcfbf6;
     align-self: flex-end;
     position: absolute;
-    right: 60px;
-    font-size: 10px;
+    right: 17%;
+    font-size: 17px; /* 7 */
     background-color: rgba(14, 14, 14, 0.473);
      bottom: 5%;
      padding: 3px;
      border-radius: 5px;
     backdrop-filter: blur(70px);
+    font-weight: 900;
+    filter: drop-shadow(1px 1px 4px #00ccff);
+    
 }
 .time{
-    color: rgb(249, 177, 164);
+    color: #c5fac8;
     align-self: flex-end;
     position: absolute;
     right: 3%;
-    font-size: 10px;
+    font-size: 7px;
     background-color: rgba(14, 14, 14, 0.473);
      bottom: 5%;
      padding: 3px;
      border-radius: 5px;
     backdrop-filter: blur(70px);
+    font-weight: 900;
+    filter: drop-shadow(1px 1px 4px #00ccff);
 }
+/* unreal elements end */
 .dbtn{
     height: 60px;
     width: 60px;
@@ -363,4 +433,7 @@ transition: 0.6s;
 
 .hidemain{
     transform: translate(-130%,0%);
+}
+.over{
+    background-color: #f5546f45;
 }
