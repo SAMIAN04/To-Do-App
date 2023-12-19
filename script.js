@@ -71,7 +71,7 @@ function initialize() {
     function showAdvanceTask() {
        
         if (Notification.permission == `default`) {
-            alert(`If you want to use remainder Feature Please Allow notification`)
+            // alert(`If you want to use remainder Feature Please Allow notification`)
             Notification.requestPermission();
         }
         else{
@@ -117,21 +117,18 @@ function initialize() {
                     
                   }
                 
-         else if (taskdate == fulldate && taskTime < etime){
+         else if (taskdate == fulldate && taskTime < etime && task.childNodes.length == 11 ){
             task.classList.add(`over`)
 
          }
-          else if (taskdate < fulldate && taskTime >= etime  ){
+          else if (taskdate < fulldate && taskTime >= etime && task.childNodes.length == 11   ){
             
             task.classList.add(`over`)
 
           }
-          else if ( taskdate < fulldate && taskTime <= etime){
+          else if ( taskdate < fulldate && taskTime <= etime && task.childNodes.length == 11 ){
             task.classList.add(`over`)
           }
-           
-          
-
          })
         
          }, 500);
