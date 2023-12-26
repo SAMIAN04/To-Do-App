@@ -70,14 +70,10 @@ function initialize() {
 
     function showAdvanceTask() {
        
-        if (Notification.permission == `default`) {
-            // alert(`If you want to use remainder Feature Please Allow notification`)
-            Notification.requestPermission();
-        }
-        else{
+        
             advanceTaskSection.classList.add('show');
             mainSection.classList.add('hidemain');
-        }
+        
     }
 
     function addAdvanceTask() {
